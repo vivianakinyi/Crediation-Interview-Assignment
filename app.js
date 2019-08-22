@@ -5,19 +5,19 @@ const port = 3000
 //user.js - contains user data
 let users = require('./users');
 
+app.listen(port, () => console.log(`App listening on port ${port}..`))
 
 //Homepage
 app.get('/', (req, res) => res.send('Welcome to Crediation!'))
 
 //Fetch all the users
 app.get('/users', (req, res, next) => {
-	// res.json(["John", "James", "Jane"]);
 	res.json(users);
 });
 
 //Fetch specific user using their ID
 app.get('/users/:id', (req, res) => {
-	// Get the id parameter requested 
+	// Get the user id param
 	const userId = req.params.id
 
 	//Check if the user with id given exists in the users file
@@ -32,6 +32,3 @@ app.get('/users/:id', (req, res) => {
 	}
 
 });
-
-
-app.listen(port, () => console.log(`App listening on port ${port}..`))
