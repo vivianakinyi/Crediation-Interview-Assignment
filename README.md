@@ -15,7 +15,7 @@ To fetch existing user
 
 $ curl http://localhost:3000/users/CR1
 
-** Future Imporvements
+## Future Improvements
 1. Create routes for the different endpoints
 2. Connect API to a database to store the user details
 3. Allow creation of new users
