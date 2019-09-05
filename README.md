@@ -15,7 +15,14 @@ To fetch existing user
 
 $ curl http://localhost:3000/users/CR1
 
+To update user(s)
+$ curl -X PUT -H "Content-Type: application/json" --data '{"id": "CR1","name": "Mary", "salary":10000, "status": "resolved"}' http://localhost:3000/users/CR1
+
+To Delete a user
+$ curl -X DELETE http://localhost:3000/users/CR6
+
 ## Future Improvements
 1. Create routes for the different endpoints
 2. Connect API to a database to store the user details
-3. Allow creation of new users
+3. Allow creation of new users, update and delete - DONE
+
