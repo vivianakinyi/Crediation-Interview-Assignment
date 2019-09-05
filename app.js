@@ -49,3 +49,26 @@ app.post('/users', (req, res) => {
 	//return an updated list
 	res.json(users);
 });
+
+//PUT : Update a user
+app.put('/users/:id', (req, res) => {
+	const userId = req.params.id;
+	const user = req.body;
+	console.log("Editing user: ", userId, " to be ", user);
+
+	const updatedListUsers = [];
+
+	// loop through the list to find and replace one user
+	users.forEach(oldUser => {
+		if (oldUser.id === userId) {
+			updatedListUsers.push(user);
+		} else {
+			updatedListUsers.push(oldUser);
+		}
+	});
+
+	// replace old list with the new one
+	users = updatedListUsers;
+
+	res.json(users);
+});
