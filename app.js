@@ -72,3 +72,19 @@ app.put('/users/:id', (req, res) => {
 
 	res.json(users);
 });
+
+//DELETE: Remove a user from the list
+app.delete('/users/:id', (req, res) => {
+	const userId = req.params.id;
+
+	console.log("Delete user with id: ", userId);
+
+	// filter list copy, by exluing item to delete
+	const filtered_list = users.filter(user => user.id !== userId);
+
+	//replace old list with new one
+	users = filtered_list;
+
+	res.json(users);
+
+});
