@@ -1,6 +1,11 @@
 const express = require('express')
+const body_parser = require('body-parser');
+
 const app = express()
 const port = 3000
+
+//parse JSON
+app.use(body_parser.json());
 
 //user.js - contains user data
 let users = require('./users');
@@ -31,4 +36,16 @@ app.get('/users/:id', (req, res) => {
 		res.json({message: `User with ID ${userId} does not exist`})
 	}
 
+});
+
+// POST: Adding new user(s)
+app.post('/users', (req, res) => {
+	const user = req.body;
+	console.log('Adding new user: ', user);
+
+	//add new user to array
+	users.push(user)
+
+	//return an updated list
+	res.json(users);
 });
